@@ -9,45 +9,30 @@
                         <div class="col-lg-8">
                             <!-- Trending Top -->
                             <div class="slider-active">
-                                <!-- Single -->
-                                <div class="single-slider">
-                                    <div class="trending-top mb-30">
-                                        <div class="trend-top-img">
-                                            <img src="{{ asset('front-end/assets/img/trending/trending_top2.jpg') }}" alt="">
-                                            <div class="trend-top-cap">
-                                                <span class="bgr" data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms">Business</span>
-                                                <h2><a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a></h2>
-                                                <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">by Alice cloe   -   Jun 19, 2020</p>
+                                @foreach($data as $value)
+                                    <!-- Single -->
+                                    <div class="single-slider">
+                                        <div class="trending-top mb-30">
+                                            <div class="trend-top-img">
+                                                <img
+                                                    src="{{ asset('front-end/assets/img/trending/trending_top2.jpg') }}"
+                                                    alt="">
+                                                <div class="trend-top-cap">
+                                                    <span class="bgr" data-animation="fadeInUp" data-delay=".2s"
+                                                          data-duration="1000ms">Business</span>
+                                                    <h2><a href="{{ route('blog',$value->slug) }}"
+                                                           data-animation="fadeInUp"
+                                                           data-delay=".4s"
+                                                           data-duration="1000ms">{{ $value->title }}</a></h2>
+                                                    <p data-animation="fadeInUp" data-delay=".6s"
+                                                       data-duration="1000ms">
+                                                        {{ $value->created_at->format('d M Y') }}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Single -->
-                                <div class="single-slider">
-                                    <div class="trending-top mb-30">
-                                        <div class="trend-top-img">
-                                            <img src="{{ asset('front-end/assets/img/trending/trending_top02.jpg') }}" alt="">
-                                            <div class="trend-top-cap">
-                                                <span class="bgr" data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms">Business</span>
-                                                <h2><a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a></h2>
-                                                <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">by Alice cloe   -   Jun 19, 2020</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Single -->
-                                <div class="single-slider">
-                                    <div class="trending-top mb-30">
-                                        <div class="trend-top-img">
-                                            <img src="{{ asset('front-end/assets/img/trending/trending_top03.jpg') }}" alt="">
-                                            <div class="trend-top-cap">
-                                                <span class="bgr" data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms">Business</span>
-                                                <h2><a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a></h2>
-                                                <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">by Alice cloe   -   Jun 19, 2020</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <!-- Right content -->
@@ -57,12 +42,13 @@
                                 <div class="col-lg-12 col-md-6 col-sm-6">
                                     <div class="trending-top mb-30">
                                         <div class="trend-top-img">
-                                            <img src="{{ asset('front-end/assets/img/trending/trending_top3.jpg') }}" alt="">
+                                            <img src="{{ asset('front-end/assets/img/trending/trending_top3.jpg') }}"
+                                                 alt="">
                                             <div class="trend-top-cap trend-top-cap2">
                                                 <span class="bgb">FASHION</span>
                                                 <h2><a href="latest_news.html">Secretart for Economic Air
                                                         plane that looks like</a></h2>
-                                                <p>by Alice cloe   -   Jun 19, 2020</p>
+                                                <p>by Alice cloe - Jun 19, 2020</p>
                                             </div>
                                         </div>
                                     </div>
@@ -70,11 +56,13 @@
                                 <div class="col-lg-12 col-md-6 col-sm-6">
                                     <div class="trending-top mb-30">
                                         <div class="trend-top-img">
-                                            <img src="{{ asset('front-end/assets/img/trending/trending_top4.jpg') }}" alt="">
+                                            <img src="{{ asset('front-end/assets/img/trending/trending_top4.jpg') }}"
+                                                 alt="">
                                             <div class="trend-top-cap trend-top-cap2">
                                                 <span class="bgg">TECH </span>
-                                                <h2><a href="latest_news.html">Secretart for Economic Air plane that looks like</a></h2>
-                                                <p>by Alice cloe   -   Jun 19, 2020</p>
+                                                <h2><a href="latest_news.html">Secretart for Economic Air plane that
+                                                        looks like</a></h2>
+                                                <p>by Alice cloe - Jun 19, 2020</p>
                                             </div>
                                         </div>
                                     </div>
@@ -109,46 +97,29 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="weekly2-news-active d-flex">
-                                            <!-- Single -->
-                                            <div class="weekly2-single">
-                                                <div class="weekly2-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weeklyNews1.png') }}" alt="">
+                                            @foreach($data as $value)
+                                                <!-- Single -->
+                                                <div class="weekly2-single">
+                                                    <div class="weekly2-img">
+                                                        <img
+                                                            width="245px"
+                                                            height="165px"
+                                                            src="{{ asset('storage/'.$value->image) }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="weekly2-caption">
+                                                        <h4><a href="{{ route('blog',$value->slug) }}">
+                                                                {{ $value->title }}
+                                                            </a>
+                                                        </h4>
+                                                        <p>
+                                                            {{ $value->created_at->format('d M Y') }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="weekly2-caption">
-                                                    <h4><a href="#">Scarlett’s disappointment at latest accolade</a></h4>
-                                                    <p>Jhon  |  2 hours ago</p>
-                                                </div>
-                                            </div>
-                                            <!-- Single -->
-                                            <div class="weekly2-single">
-                                                <div class="weekly2-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weeklyNews2.png') }}" alt="">
-                                                </div>
-                                                <div class="weekly2-caption">
-                                                    <h4><a href="#">Scarlett’s disappointment at latest accolade</a></h4>
-                                                    <p>Jhon  |  2 hours ago</p>
-                                                </div>
-                                            </div>
-                                            <!-- Single -->
-                                            <div class="weekly2-single">
-                                                <div class="weekly2-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weeklyNews3.png') }}" alt="">
-                                                </div>
-                                                <div class="weekly2-caption">
-                                                    <h4><a href="#">Scarlett’s disappointment at latest accolade</a></h4>
-                                                    <p>Jhon  |  2 hours ago</p>
-                                                </div>
-                                            </div>
-                                            <!-- Single -->
-                                            <div class="weekly2-single">
-                                                <div class="weekly2-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weeklyNews2.png') }}" alt="">
-                                                </div>
-                                                <div class="weekly2-caption">
-                                                    <h4><a href="#">Scarlett’s disappointment at latest accolade</a></h4>
-                                                    <p>Jhon  |  2 hours ago</p>
-                                                </div>
-                                            </div>
+                                                <!-- Single -->
+                                            @endforeach
+
                                         </div>
                                     </div>
                                 </div>
@@ -160,71 +131,48 @@
         </div>
         <!-- End Weekly-News -->
         <!--  Recent Articles start -->
-        <div class="recent-articles pt-80 pb-80">
-            <div class="container">
-                <div class="recent-wrapper">
-                    <!-- section Tittle -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section-tittle mb-30">
-                                <h3>Trending  News</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="recent-active dot-style d-flex dot-style">
-                                <!-- Single -->
-                                <div class="single-recent">
-                                    <div class="what-img">
-                                        <img src="{{ asset('front-end/assets/img/gallery/tranding1.png') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="#" > <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4></a></h4>
-                                        <P>Jun 19, 2020</P>
-                                        <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><span class="flaticon-play-button"></span></a>
+        {{--        <div class="recent-articles pt-80 pb-80">--}}
+        {{--            <div class="container">--}}
+        {{--                <div class="recent-wrapper">--}}
+        {{--                    <!-- section Tittle -->--}}
+        {{--                    <div class="row">--}}
+        {{--                        <div class="col-lg-12">--}}
+        {{--                            <div class="section-tittle mb-30">--}}
+        {{--                                <h3>Trending News</h3>--}}
+        {{--                            </div>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="row">--}}
+        {{--                        <div class="col-12">--}}
+        {{--                            <div class="recent-active dot-style d-flex dot-style">--}}
+        {{--                               @foreach($data as $value)--}}
+        {{--                                    <!-- Single -->--}}
+        {{--                                    <div class="single-recent">--}}
+        {{--                                        <div class="what-img">--}}
+        {{--                                            <img src="{{ asset('storage'.$value->image) }}" alt="">--}}
+        {{--                                        </div>--}}
+        {{--                                        <div class="what-cap">--}}
+        {{--                                            <h4><a href="#"><h4><a href="{{ route('blog',$value->slug) }}">--}}
+        {{--                                                        {{ $value->title }}--}}
+        {{--                                                        </a></h4></a></h4>--}}
+        {{--                                            <P>--}}
+        {{--                                                {{ $value->created_at->format('d M Y') }}--}}
+        {{--                                            </P>--}}
+        {{--                                            <a class="popup-video btn-icon"--}}
+        {{--                                               href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><span--}}
+        {{--                                                    class="flaticon-play-button"></span></a>--}}
 
-                                    </div>
-                                </div>
-                                <!-- Single -->
-                                <div class="single-recent">
-                                    <div class="what-img">
-                                        <img src="{{ asset('front-end/assets/img/gallery/tranding2.png') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
-                                        <P>Jun 19, 2020</P>
-                                        <a class="popup-video" href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><span class="flaticon-play-button"></span></a>
-                                    </div>
-                                </div>
-                                <!-- Single -->
-                                <div class="single-recent">
-                                    <div class="what-img">
-                                        <img src="{{ asset('front-end/assets/img/gallery/tranding1.png') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="latest_news.html"> <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4></a></h4>
-                                        <P>Jun 19, 2020</P>
-                                        <a class="popup-video" href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><span class="flaticon-play-button"></span></a>
-                                    </div>
-                                </div>
-                                <!-- Single -->
-                                <div class="single-recent">
-                                    <div class="what-img">
-                                        <img src="{{ asset('front-end/assets/img/gallery/tranding2.png') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
-                                        <P>Jun 19, 2020</P>
-                                        <a class="popup-video" href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><span class="flaticon-play-button"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{--                                        </div>--}}
+        {{--                                    </div>--}}
+        {{--                                    <!-- Single -->--}}
+        {{--                               @endforeach--}}
+
+        {{--                            </div>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
         <!--Recent Articles End -->
         <!-- Start Video Area -->
         <div class="youtube-area video-padding d-none d-sm-block">
@@ -332,51 +280,26 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="weekly3-news-active dot-style d-flex">
-                                            <div class="weekly3-single">
-                                                <div class="weekly3-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weekly2News1.png') }}" alt="">
+                                            @foreach($data as $value)
+                                                <div class="weekly3-single">
+                                                    <div class="weekly3-img">
+                                                        <img
+                                                            width="270px"
+                                                            height="176px"
+                                                            src="{{ asset('storage/'.$value->image) }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="weekly3-caption">
+                                                        <h4><a href="{{ route('blog',$value->slug) }}">
+                                                                {{ $value->title }}
+                                                            </a></h4>
+                                                        <p>
+                                                            {{ $value->created_at->format('d M Y') }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="weekly3-caption">
-                                                    <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
-                                                    <p>19 Jan 2020</p>
-                                                </div>
-                                            </div>
-                                            <div class="weekly3-single">
-                                                <div class="weekly3-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weekly2News2.png') }}" alt="">
-                                                </div>
-                                                <div class="weekly3-caption">
-                                                    <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
-                                                    <p>19 Jan 2020</p>
-                                                </div>
-                                            </div>
-                                            <div class="weekly3-single">
-                                                <div class="weekly3-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weekly2News3.png') }}" alt="">
-                                                </div>
-                                                <div class="weekly3-caption">
-                                                    <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
-                                                    <p>19 Jan 2020</p>
-                                                </div>
-                                            </div>
-                                            <div class="weekly3-single">
-                                                <div class="weekly3-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weekly2News4.png') }}" alt="">
-                                                </div>
-                                                <div class="weekly3-caption">
-                                                    <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
-                                                    <p>19 Jan 2020</p>
-                                                </div>
-                                            </div>
-                                            <div class="weekly3-single">
-                                                <div class="weekly3-img">
-                                                    <img src="{{ asset('front-end/assets/img/gallery/weekly2News2.png') }}" alt="">
-                                                </div>
-                                                <div class="weekly3-caption">
-                                                    <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
-                                                    <p>19 Jan 2020</p>
-                                                </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
                                     </div>
                                 </div>

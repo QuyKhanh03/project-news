@@ -95,7 +95,7 @@
                                         <li><a href="#">Latest News</a></li>
                                         <li><a href="#">Pages</a>
                                             <ul class="submenu">
-                                                <li><a href="{{ route('blog') }}">Blog</a></li>
+                                                <li><a href="{{ route('blogs') }}">Blog</a></li>
 {{--                                                <li><a href="blog_details.html">Blog Details</a></li>--}}
 {{--                                                <li><a href="elements.html">Element</a></li>--}}
                                             </ul>
