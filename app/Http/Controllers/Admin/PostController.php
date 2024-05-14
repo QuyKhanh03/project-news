@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -16,6 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $data = Post::all();
+        //select * from posts
         return view('admin.posts.index',compact('data'));
     }
 
@@ -105,8 +107,9 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success','Post deleted successfully');
     }
 
-    private function renderSlug(mixed $title)
+    public function renderSlug($name)
     {
-        return strtolower(str_replace(' ', '-', $title));
+        $slug = Str::slug($name);
+        return $slug;
     }
 }

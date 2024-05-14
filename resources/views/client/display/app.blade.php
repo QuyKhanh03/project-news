@@ -91,7 +91,15 @@
                                     <ul id="navigation">
                                         <li><a href="{{ route('home') }}">Home</a></li>
                                         <li><a href="#">about</a></li>
-                                        <li><a href="#">Category</a></li>
+                                        <li><a href="#">Category
+
+                                        </a>
+                                        <ul class="submenu">
+                                            @foreach(\App\Models\Category::all() as $value)
+                                                <li><a href="#">{{ $value->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                    </li>
                                         <li><a href="#">Latest News</a></li>
                                         <li><a href="#">Pages</a>
                                             <ul class="submenu">

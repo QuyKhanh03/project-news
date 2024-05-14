@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    /**
+     * @var $fillable = ['name',
+     * 'email',
+     * 'password',
+     * 'role',
+     * 'status',
+     * ];
+     */
+
+
     /**
      * Display a listing of the resource.
      */
@@ -22,7 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -30,7 +41,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'status' => 'required'
+        ]);
+        $model = new User();
+        $model->fill($request->all());
+        $model->save();
+        return redirect()->route('users.index');
     }
 
     /**
@@ -46,7 +66,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $model = User::find($id);
+        return view('admin.users.edit', compact('model'));
     }
 
     /**
@@ -54,7 +75,15 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $model = User::find($id);
+        $model->fill($request->all());
+        $model->save();
+        return redirect()->route('users.index');
     }
 
     /**
@@ -62,6 +91,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $model = User::find($id);
+        $model->delete();
+        return redirect()->route('users.index');
     }
 }

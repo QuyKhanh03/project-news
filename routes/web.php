@@ -20,8 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('blogs', function () {
-})->name('blogs');
+Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
 
 Route::get('blog/{slug}', [BlogController::class,'show'])->name('blog');
 Route::get('/dashboard', function () {
@@ -45,3 +44,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::resource('posts', PostController::class);
     Route::resource('users', UserController::class);
 });
+
+
