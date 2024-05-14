@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
+    return view('client.index');
+})->name('home');
+Route::get('blog', function () {
+})->name('blog');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -37,6 +38,8 @@ Route::get('/admin', function () {
     return view('admin.dashboard.index');
 })->middleware(['auth', 'verified'])->name('admin');
 
-Route::resource('users', UserController::class)->middleware('auth');
-Route::resource('categories', CategoryController::class)->middleware('auth');
-Route::resource('posts', PostController::class)->middleware('auth');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('posts', PostController::class);
+    Route::resource('users', UserController::class);
+});

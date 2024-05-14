@@ -278,8 +278,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link
-            {{ request()->is('admin*') ? 'active' : 'collapsed'}}
+            <a class="nav-link collapsed
              " href="{{ route('admin') }}">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
@@ -287,7 +286,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link
-            {{ request()->is('users*') ? 'active' : 'collapsed'}}
+            {{ request()->is('admin/users*') ? 'active' : 'collapsed'}}
             " href="{{ route('users.index') }}">
                 <i class="bi bi-person"></i>
                 <span>Users</span>
@@ -295,14 +294,14 @@
         </li>
         <li class="nav-item">
             <a class="nav-link
-            {{ request()->is('categories*') ? 'active' : 'collapsed'}}
+            {{ request()->is('admin/categories*') ? 'active' : 'collapsed'}}
             " href="{{ route('categories.index') }}">
                 <i class="bi bi-list"></i>
                 <span>Categories</span>
             </a>
         </li><li class="nav-item">
             <a class="nav-link
-            {{ request()->is('posts*') ? 'active' : 'collapsed'}}
+            {{ request()->is('admin/posts*') ? 'active' : 'collapsed'}}
             " href="{{ route('posts.index') }}">
                 <i class="bi bi-file"></i>
                 <span>Posts</span>
