@@ -114,8 +114,6 @@
                 @endif
             </div>
         </nav>
-
-
         <h4 id="mh-comments" class="mh-widget-title mh-comment-form-title">
 			<span class="mh-widget-title-inner">
 				Hãy bình luận đầu tiên			</span>
