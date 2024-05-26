@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
+
     }
 
     /**
@@ -21,5 +23,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+
+        $getPosts = function () {
+            return \App\Models\Post::query()->orderBy('id', 'desc')->paginate(10);
+        };
+        View::composer('*', function ($view) use ($getPosts) {
+            $view->with('getPosts', $getPosts());
+        });
     }
 }

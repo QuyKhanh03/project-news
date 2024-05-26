@@ -13,7 +13,8 @@
                     <span class="entry-meta-author author vcard"><i class="fa fa-user"></i><a class="fn"
                                                                                               href="https://tructiepdagathomo.top/author/tructiepdagathomo/">Robert</a></span>
                     <span class="entry-meta-categories"><i class="fa fa-folder-open-o"></i><a
-                            href="https://tructiepdagathomo.top/category/top-game/" rel="category tag">Top Game</a></span>
+                            href="https://tructiepdagathomo.top/category/top-game/"
+                            rel="category tag">Top Game</a></span>
                     <span class="entry-meta-comments"><i class="fa fa-comment-o"></i><a class="mh-comment-scroll"
                                                                                         href="https://tructiepdagathomo.top/cung-trai-nghiem-da-ga-cua-sat-chat-luong-tai-jun88/#mh-comments">0</a></span>
                 </p>
@@ -91,18 +92,30 @@
                 <p>&nbsp;</p>
             </div>
         </article>
-        <nav class="mh-post-nav mh-row mh-clearfix" itemscope="itemscope"
-             itemtype="https://schema.org/SiteNavigationElement">
-            <div class="mh-col-1-2 mh-post-nav-item mh-post-nav-prev">
-                <a href="https://tructiepdagathomo.top/da-ga-truc-tuyen/" rel="prev"><img width="80" height="60"
-                                                                                          src="https://tructiepdagathomo.top/wp-content/uploads/2024/04/Alo789-co-rat-nhieu-hinh-thuc-da-ga-80x60.jpg"
-                                                                                          class="attachment-mh-magazine-lite-small size-mh-magazine-lite-small wp-post-image"
-                                                                                          alt="Đá gà trực tuyến tại Alo789 được đông đảo người chơi ưa thích"
-                                                                                          decoding="async"
-                                                                                          srcset="https://tructiepdagathomo.top/wp-content/uploads/2024/04/Alo789-co-rat-nhieu-hinh-thuc-da-ga-80x60.jpg 80w, https://tructiepdagathomo.top/wp-content/uploads/2024/04/Alo789-co-rat-nhieu-hinh-thuc-da-ga-326x245.jpg 326w"
-                                                                                          sizes="(max-width: 80px) 100vw, 80px"/><span>Trước đó</span>
-                    <p>Xem Đá Gà Trực Tuyến Mới Nhất Tại Alo789.Work</p></a></div>
+        <nav class="mh-post-nav mh-row mh-clearfix" itemscope="itemscope">
+            <div class="mh-post-nav mh-row mh-clearfix" itemscope="itemscope">
+                @if ($previous = $model->where('id', '<', $model->id)->orderBy('id', 'desc')->first())
+                    <div class="mh-col-1-2 mh-post-nav-item mh-post-nav-prev">
+                        <a href="{{ route('blog', $previous->slug) }}" rel="prev">
+                            <img width="80" height="60" src="{{ asset('storage/'.$previous->image) }}" alt="" decoding="async">
+                            <span>Trước đó</span>
+                            <p>{{ $previous->title }}</p>
+                        </a>
+                    </div>
+                @endif
+                @if ($next = $model->where('id', '>', $model->id)->orderBy('id', 'asc')->first())
+                    <div class="mh-col-1-2 mh-post-nav-item mh-post-nav-next">
+                        <a href="{{ route('blog', $next->slug) }}" rel="next">
+                            <img width="80" height="60" src="{{ asset('storage/'.$next->image)  }}" alt="" decoding="async">
+                            <span>Tiếp theo</span>
+                            <p>{{ $next->title }}</p>
+                        </a>
+                    </div>
+                @endif
+            </div>
         </nav>
+
+
         <h4 id="mh-comments" class="mh-widget-title mh-comment-form-title">
 			<span class="mh-widget-title-inner">
 				Hãy bình luận đầu tiên			</span>

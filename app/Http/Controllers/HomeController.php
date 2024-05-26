@@ -13,11 +13,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Post::all();
+        $data = Post::paginate(10);
         $info = Info::all();
         return view('client.index', compact('data', 'info'));
     }
 
+//    public static function getPosts()
+//    {
+//        return Post::paginate(10);
+//    }
     /**
      * Show the form for creating a new resource.
      */

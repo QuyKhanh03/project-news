@@ -55,6 +55,7 @@
     <link rel='stylesheet' id='wp-block-library-css'
           href='{{ asset('front-end/css/style.min.css') }}'
           type='text/css' media='all'/>
+{{--    <link rel="stylesheet" href="{{ asset('front-end/css/main.css') }}" type="text/css" media="all"/>--}}
     <style id='classic-theme-styles-inline-css' type='text/css'>
         .wp-block-button__link {
             color: #fff;
@@ -454,8 +455,10 @@
                 <div class="menu-menu-1-container">
                     <ul id="menu-menu-1" class="menu">
                         <li id="menu-item-65"
-                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-65">
-                            <a href="https://tructiepdagathomo.top/" aria-current="page">Trang chủ</a></li>
+                            class="menu-item menu-item-type-custom menu-item-object-custom
+                            {{ request()->routeIs('home') ? 'current-menu-item' : ''}}
+                              menu-item-home menu-item-65">
+                            <a href="{{ route('home') }}" aria-current="page">Trang chủ</a></li>
                         <li id="menu-item-67"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-67"><a
                                 href="https://tructiepdagathomo.top/top-game">Top Game</a></li>
@@ -479,29 +482,7 @@
     <div class="mh-wrapper mh-clearfix">
 
         @yield('content')
-        <aside class="mh-widget-col-1 mh-sidebar" itemscope="itemscope" itemtype="https://schema.org/WPSideBar">
-            <div id="block-3" class="mh-widget widget_block">
-                <div class="wp-block-group">
-                    <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
-                        <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="500"
-                                                                      height="500"
-                                                                      src="https://tructiepdagathomo.top/wp-content/uploads/2023/09/8098082_a0dac-1.webp"
-                                                                      alt="" class="wp-image-3218"
-                                                                      srcset="https://tructiepdagathomo.top/wp-content/uploads/2023/09/8098082_a0dac-1.webp 500w, https://tructiepdagathomo.top/wp-content/uploads/2023/09/8098082_a0dac-1-300x300.webp 300w, https://tructiepdagathomo.top/wp-content/uploads/2023/09/8098082_a0dac-1-150x150.webp 150w"
-                                                                      sizes="(max-width: 500px) 100vw, 500px"/></figure>
-                        <h2 class="wp-block-heading">Bài viết mới </h2>
-                        <ul class="wp-block-latest-posts__list wp-block-latest-posts">
-                            @foreach(\App\Models\Post::all() as $value)
-                                <li><a class="wp-block-latest-posts__post-title"
-                                       href="{{ route('blog',$value->slug) }}">
-                                        {{ $value->title }}
-                                    </a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        @include('client.display.sidebar')
     </div>
 </div>
 </body>
