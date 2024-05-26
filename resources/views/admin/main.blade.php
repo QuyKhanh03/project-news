@@ -281,30 +281,40 @@
             <a class="nav-link collapsed
              " href="{{ route('admin') }}">
                 <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
+                <span>Admin</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link
-            {{ request()->is('admin/users*') ? 'active' : 'collapsed'}}
-            " href="{{ route('users.index') }}">
-                <i class="bi bi-person"></i>
-                <span>Users</span>
-            </a>
-        </li>
+{{--        <li class="nav-item">--}}
+{{--            <a class="nav-link--}}
+{{--            {{ request()->is('admin/users*') ? 'active' : 'collapsed'}}--}}
+{{--            " href="{{ route('users.index') }}">--}}
+{{--                <i class="bi bi-person"></i>--}}
+{{--                <span>Users</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
         <li class="nav-item">
             <a class="nav-link
             {{ request()->is('admin/categories*') ? 'active' : 'collapsed'}}
             " href="{{ route('categories.index') }}">
                 <i class="bi bi-list"></i>
-                <span>Categories</span>
+                <span>Danh mục</span>
             </a>
         </li><li class="nav-item">
             <a class="nav-link
             {{ request()->is('admin/posts*') ? 'active' : 'collapsed'}}
             " href="{{ route('posts.index') }}">
                 <i class="bi bi-file"></i>
-                <span>Posts</span>
+                <span>Bài viết</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link
+            {{ request()->is('admin/info*') ? 'active' : 'collapsed'}}
+            " href="{{ route('info.index') }}">
+                <i class="bi bi-info-circle-fill
+                "></i>
+                <span>Thông tin liên quan</span>
             </a>
         </li>
 
@@ -329,7 +339,9 @@
                 @csrf
                 <button class="nav-link collapsed" >
                     <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Logout</span>
+                    <span>
+                        Đăng xuất
+                    </span>
                 </button>
             </form>
         </li><!-- End Login Page Nav -->

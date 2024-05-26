@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\InfoController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
@@ -43,6 +44,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
     Route::resource('users', UserController::class);
+    Route::resource('info', InfoController::class);
 });
 
+Route::get('demo', function () {
+    return view('client.display.app');
+})->name('demo');
 

@@ -71,3 +71,14 @@
     </main><!-- End #main -->
 @endsection
 
+@push('script')
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#content'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+@endpush
+

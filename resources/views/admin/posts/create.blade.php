@@ -39,7 +39,6 @@
                                     <div class="col">
                                         <label for="category_id" class="form-label">Category</label>
                                         <select class="form-select" id="category_id" name="category_id">
-                                            <option value="">Select Category</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                             @endforeach
@@ -66,4 +65,14 @@
 
     </main><!-- End #main -->
 @endsection
+@push('script')
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#content'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+@endpush
 

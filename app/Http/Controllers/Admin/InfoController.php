@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Info;
-use App\Models\Post;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class InfoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Post::all();
-        $info = Info::all();
-        return view('client.index', compact('data', 'info'));
+        $data = Info::all();
+        return view('admin.info.index', compact('data'));
     }
 
     /**
@@ -23,7 +22,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.info.create');
     }
 
     /**
@@ -31,7 +30,14 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        Info::create($request->all());
+
+        return redirect()->route('info.index')
+            ->with('success', 'Info created successfully.');
     }
 
     /**
@@ -47,7 +53,8 @@ class HomeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $model = Info::find($id);
+        return view('admin.info.edit', compact('model'));
     }
 
     /**
@@ -55,7 +62,14 @@ class HomeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        Info::find($id)->update($request->all());
+
+        return redirect()->route('info.index')
+            ->with('success', 'Info updated successfully');
     }
 
     /**
